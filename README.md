@@ -20,12 +20,14 @@ class UserListView extends React.PureComponent {
     componentDidMount() {
         const { actions: { fetchUserList } } = this.props;
         fetchUserList();
-        this.setState(state => ({ ...state, loading: true }));
-        await take('RECEIVE_USER_LIST');
-        this.setState(state => ({ ...state, loading: false }));
+        this.setState(state => ({ ...state, loading: true })); // start loading
+        await take('RECEIVE_USER_LIST');  // reducers will update `users` in redux store
+        this.setState(state => ({ ...state, loading: false })); // receive data, stop loading
     }
 
     render() {
+        const { users } = this.props; // `users` is mapped from redux store
+        const { loading } = this.state;
         return (
             <Spin loading={loading}>
                 <ul>
