@@ -109,7 +109,7 @@ const action = await take('RECEIVE_DATA'); // action.type should be RECEIVE_DATA
 const takeAllOf: <P = {}, M = {}>(patterns: Pattern<P, M>[]) => Promise<Action<P, M>>[];
 ```
 
-`takeAllOf` receives an array of patterns as it single argument, and returns an array of promises.
+`takeAllOf` receives an array of patterns as its single argument, and returns an array of promises.
 
 Internally, `takeAllOf(patterns)` is the same with `Promise.all(patterns.map(take))`.
 
@@ -125,7 +125,7 @@ const [{ payload: articles }, { payload: users }] = await takeAllOf(['RECEIVE_AR
 const takeOneOf: <P = {}, M = {}>(patterns: Pattern<P, M>[]) => Promise<Action<P, M>>;
 ```
 
-`takeOneOf` receives an array of patterns as it single argument, and returns a promise.
+`takeOneOf` receives an array of patterns as its single argument, and returns a promise.
 
 Internally, `takeOneOf(patterns)` is the same with `Promise.race(patterns.map(take))`.
 
