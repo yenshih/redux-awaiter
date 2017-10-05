@@ -17,7 +17,7 @@ It's inspired by [Redux Saga](https://github.com/redux-saga/redux-saga/), but th
 class UserListView extends React.PureComponent {
     state = { loading: false };
 
-    componentDidMount() {
+    async componentDidMount() {
         const { actions: { fetchUserList } } = this.props;
         fetchUserList();
         this.setState(state => ({ ...state, loading: true })); // start loading
