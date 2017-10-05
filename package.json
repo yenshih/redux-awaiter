@@ -1,0 +1,71 @@
+{
+  "name": "redux-awaiters",
+  "version": "1.0.0",
+  "description": "A Redux middleware for giving opportunities to await and receive actions in anywhere",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "files": [
+    "lib",
+    "es",
+    "src"
+  ],
+  "scripts": {
+    "clean": "rimraf lib es coverage",
+    "lint": "tslint -p .",
+    "test": "jest --colors",
+    "test:coverage": "npm test -- --coverage",
+    "start": "npm test -- --watch",
+    "build:es": "tsc --outDir es -d",
+    "build:commonjs": "tsc --target es5 --outDir lib",
+    "build": "npm run build:es && npm run build:commonjs",
+    "prepare": "npm run clean && npm run lint && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yenshih/redux-awaiters.git"
+  },
+  "keywords": [
+    "redux",
+    "middleware",
+    "await",
+    "action"
+  ],
+  "authors": [
+    "Shi Yan <yenshih95@gmail.com> (https://github.com/yenshih)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yenshih/redux-awaiters/issues"
+  },
+  "npmName": "redux-awaiters",
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "./node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^21.1.2",
+    "@types/node": "^8.0.32",
+    "jest": "^21.2.1",
+    "redux": "^3.7.2",
+    "ts-jest": "^21.0.1",
+    "tslint": "^5.7.0",
+    "tslint-config-airbnb": "^5.3.0",
+    "typescript": "^2.5.3"
+  },
+  "peerDependencies": {
+    "redux": "^3.0.0"
+  },
+  "browserify": {
+    "transform": [
+      "loose-envify"
+    ]
+  }
+}
