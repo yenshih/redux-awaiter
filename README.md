@@ -106,7 +106,7 @@ const action = await take('RECEIVE_DATA'); // action.type should be RECEIVE_DATA
 #### takeAllOf
 
 ```typescript
-const takeAllOf: <P = {}, M = {}>(patterns: Pattern<P, M>[]) => Promise<Action<P, M>[]>;
+const takeAllOf: <P = {}, M = {}>(patterns: Pattern<P, M>[]) => Promise<Action<P, M>>[];
 ```
 
 `takeAllOf` receives an array of patterns as it single argument, and returns an array of promises.
