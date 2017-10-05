@@ -1,6 +1,10 @@
 # Redux Awaiter
 Redux Awaiter is a Redux middleware for giving opportunities to await and receive actions in anywhere.
 
+[![build status](https://img.shields.io/travis/yenshih/redux-awaiter/master.svg?style=flat-square)](https://travis-ci.org/yenshih/redux-awaiter)
+[![npm version](https://img.shields.io/npm/v/redux-awaiter.svg?style=flat-square)](https://www.npmjs.com/package/redux-awaiter)
+[![npm downloads](https://img.shields.io/npm/dm/redux-awaiter.svg?style=flat-square)](https://www.npmjs.com/package/redux-awaiter)
+
 ## Motivation
 
 Redux Awaiter is designed to await and receive Redux actions in React components and help us manage local state conveniently.
