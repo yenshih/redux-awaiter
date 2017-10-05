@@ -32,7 +32,7 @@ class UserListView extends React.PureComponent {
                     {users.map(({ id, name }) => <li key={id}>{name}</li>)}
                 </ul>
             </Spin>
-        )
+        );
     }
 }
 ```
