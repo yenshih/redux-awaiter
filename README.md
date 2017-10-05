@@ -95,9 +95,7 @@ const store = createStore(rootReducer, applyMiddleware(
 const take: <P = {}, M = {}>(pattern: Pattern<P, M>) => Promise<Action<P, M>>;
 ```
 
-`take` receives a pattern as its single argument, and returns a promise.
-
-That promise will resolve the first matching action which is dispatched.
+`take` receives a pattern as its single argument, and returns a Promise which contains the first matching action.
 
 ```javascript
 const action = await take('RECEIVE_DATA'); // action.type should be RECEIVE_DATA
@@ -106,10 +104,10 @@ const action = await take('RECEIVE_DATA'); // action.type should be RECEIVE_DATA
 #### takeAllOf
 
 ```typescript
-const takeAllOf: <P = {}, M = {}>(patterns: Pattern<P, M>[]) => Promise<Action<P, M>>[];
+const takeAllOf: <P = {}, M = {}>(patterns: Pattern<P, M>[]) => Promise<Action<P, M>[]>;
 ```
 
-`takeAllOf` receives an array of patterns as its single argument, and returns an array of promises.
+`takeAllOf` receives an array of patterns as its single argument, and returns a Promise which contains an array of actions correspond to patterns.
 
 Internally, `takeAllOf(patterns)` is the same with `Promise.all(patterns.map(take))`.
 
@@ -125,7 +123,7 @@ const [{ payload: articles }, { payload: users }] = await takeAllOf(['RECEIVE_AR
 const takeOneOf: <P = {}, M = {}>(patterns: Pattern<P, M>[]) => Promise<Action<P, M>>;
 ```
 
-`takeOneOf` receives an array of patterns as its single argument, and returns a promise.
+`takeOneOf` receives an array of patterns as its single argument, and returns a Promise which contains the first action matched with one of patterns.
 
 Internally, `takeOneOf(patterns)` is the same with `Promise.race(patterns.map(take))`.
 
