@@ -90,7 +90,7 @@ const store = createStore(rootReducer, applyMiddleware(
 #### take
 
 ```typescript
-const take: <P, M = {}>(pattern: Pattern<P, M>) => Promise<Action<P, M>>;
+const take: <P = {}, M = {}>(pattern: Pattern<P, M>) => Promise<Action<P, M>>;
 ```
 
 `take` receives a pattern as its single argument, and returns a promise.
@@ -103,6 +103,10 @@ const action = await take('RECEIVE_DATA'); // action.type should be RECEIVE_DATA
 
 #### takeAllOf
 
+```typescript
+const takeAllOf: <P = {}, M = {}>(patterns: Pattern<P, M>[]) => Promise<Action<P, M>[]>;
+```
+
 `takeAllOf` receives an array of patterns as it single argument, and returns an array of promises.
 
 Internally, `takeAllOf(patterns)` is the same with `Promise.all(patterns.map(take))`.
@@ -114,6 +118,10 @@ const [{ payload: articles }, { payload: users }] = await takeAllOf(['RECEIVE_AR
 ```
 
 #### takeOneOf
+
+```typescript
+const takeOneOf: <P = {}, M = {}>(patterns: Pattern<P, M>[]) => Promise<Action<P, M>>;
+```
 
 `takeOneOf` receives an array of patterns as it single argument, and returns a promise.
 
