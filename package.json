@@ -1,6 +1,6 @@
 {
-  "name": "redux-awaiters",
-  "version": "1.0.0",
+  "name": "redux-awaiter",
+  "version": "0.1.0",
   "description": "A Redux middleware for giving opportunities to await and receive actions in anywhere",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -23,22 +23,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yenshih/redux-awaiters.git"
+    "url": "https://github.com/yenshih/redux-awaiter.git"
   },
   "keywords": [
     "redux",
     "middleware",
     "await",
-    "action"
+    "receive",
+    "action",
+    "local"
   ],
   "authors": [
     "Shi Yan <yenshih95@gmail.com> (https://github.com/yenshih)"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yenshih/redux-awaiters/issues"
+    "url": "https://github.com/yenshih/redux-awaiter/issues"
   },
-  "npmName": "redux-awaiters",
+  "npmName": "redux-awaiter",
   "jest": {
     "transform": {
       ".(ts|tsx)": "./node_modules/ts-jest/preprocessor.js"

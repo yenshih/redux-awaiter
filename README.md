@@ -1,5 +1,5 @@
 # Redux Awaiter
-A Redux middleware for giving opportunities to await and receive actions in anywhere.
+Redux Awaiter is a Redux middleware for giving opportunities to await and receive actions in anywhere.
 
 ## Motivation
 
@@ -90,6 +90,7 @@ const take: <P, M = {}>(pattern: Pattern<P, M>) => Promise<Action<P, M>>;
 ```
 
 `take` receives a pattern as its single argument, and returns a promise.
+
 That promise will resolve the first matching action which is dispatched.
 
 ```javascript
@@ -99,8 +100,10 @@ const action = await take('RECEIVE_DATA'); // action.type should be RECEIVE_DATA
 #### takeAllOf
 
 `takeAllOf` receives an array of patterns as it single argument, and returns an array of promises.
+
 Internally, `takeAllOf(patterns)` is the same with `Promise.all(patterns.map(take))`.
-If you need to await multiple actions in specific order, use multiple `await take()` instead.
+
+If you need to await and receive multiple actions in specific order, use multiple `await take()` instead.
 
 ```javascript
 const [{ payload: articles }, { payload: users }] = await takeAllOf(['RECEIVE_ARTICLES', 'RECEIVE_USERS']);
@@ -109,6 +112,7 @@ const [{ payload: articles }, { payload: users }] = await takeAllOf(['RECEIVE_AR
 #### takeOneOf
 
 `takeOneOf` receives an array of patterns as it single argument, and returns a promise.
+
 Internally, `takeOneOf(patterns)` is the same with `Promise.race(patterns.map(take))`.
 
 ```javascript
@@ -128,6 +132,7 @@ const { type } = await take(/^FETCH_USER/);
 ### DO NOT OVERUSE
 
 Avoid relying on props MUTATION!
+
 This may cause unexpected behaviors, or make your components difficult to maintain.
 
 ```javascript
