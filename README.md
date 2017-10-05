@@ -9,7 +9,7 @@ Redux Awaiter is a Redux middleware for giving opportunities to await and receiv
 
 Redux Awaiter is designed to await and receive Redux actions in React components and help us manage local state conveniently.
 
-It's inspired by [Redux Saga](https://github.com/redux-saga/redux-saga/), but the problems they solved are totally different.
+It's inspired by [Redux Saga](https://github.com/redux-saga/redux-saga/), but the problems they solve are totally different.
 
 ## Example
 
