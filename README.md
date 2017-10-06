@@ -7,11 +7,15 @@ Redux Awaiter is a Redux middleware for giving opportunities to await and receiv
 
 ## Motivation
 
+[Local state is fine](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367).
+
 Redux Awaiter is designed to await and receive Redux actions in React components and help us manage local state conveniently.
 
 It's inspired by [Redux Saga](https://github.com/redux-saga/redux-saga/), but the problems they solve are totally different.
 
 ## Example
+
+We can use Redux Awaiter and `async/await` to pause execution until an expected action has been dispatched.
 
 ```javascript
 class UserListView extends React.PureComponent {
@@ -20,9 +24,11 @@ class UserListView extends React.PureComponent {
     async componentDidMount() {
         const { actions: { fetchUserList } } = this.props;
         fetchUserList();
-        this.setState(state => ({ ...state, loading: true })); // start loading
-        await take('RECEIVE_USER_LIST');  // reducers will update `users` in redux store
-        this.setState(state => ({ ...state, loading: false })); // receive data, stop loading
+        this.setState(state => ({ ...state, loading: true }));
+        // start loading, until RECEIVE_USER_LIST has been dispatched
+        await take('RECEIVE_USER_LIST');
+        // reducers may update `users` in redux store, stop loading
+        this.setState(state => ({ ...state, loading: false }));
     }
 
     render() {
@@ -67,11 +73,19 @@ interface Action<P, M = {}> extends BaseAction {
 }
 ```
 
-A pattern is to determine whether an action is matching with another.
+A pattern is to determine whether an action is matching.
 
 ```typescript
 type Pattern<P = {}, M = {}> = string | RegExp | ((action: Action<P, M>) => boolean);
 ```
+
+| pattern type | isMatch |
+| :------: | :------: | :------: |
+| `string` | `pattern === action.type` |
+| `RegExp` | `pattern.test(action.type)` |
+| `function` | `pattern(action)` |
+
+`object` pattern is not supported, use a function instead.
 
 ### API
 
@@ -107,7 +121,7 @@ const action = await take('RECEIVE_DATA'); // action.type should be RECEIVE_DATA
 const takeAllOf: <P = {}, M = {}>(patterns: Pattern<P, M>[]) => Promise<Action<P, M>[]>;
 ```
 
-`takeAllOf` receives an array of patterns as its single argument, and returns a Promise which contains an array of actions correspond to patterns.
+`takeAllOf` receives an array of patterns as its single argument, and returns a Promise which contains an array of actions corresponding to patterns.
 
 Internally, `takeAllOf(patterns)` is the same with `Promise.all(patterns.map(take))`.
 
@@ -123,7 +137,7 @@ const [{ payload: articles }, { payload: users }] = await takeAllOf(['RECEIVE_AR
 const takeOneOf: <P = {}, M = {}>(patterns: Pattern<P, M>[]) => Promise<Action<P, M>>;
 ```
 
-`takeOneOf` receives an array of patterns as its single argument, and returns a Promise which contains the first action matched with one of patterns.
+`takeOneOf` receives an array of patterns as its single argument, and returns a Promise which contains the first action matching with one of patterns.
 
 Internally, `takeOneOf(patterns)` is the same with `Promise.race(patterns.map(take))`.
 
@@ -136,7 +150,7 @@ if (type === 'FETCH_USER_SUCCESS') {
 }
 ```
 
-You might not need `takeOneOf`:
+You might not need `takeOneOf`.
 ```javascript
 const { type } = await take(/^FETCH_USER/);
 ```
