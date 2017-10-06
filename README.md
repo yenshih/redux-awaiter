@@ -2,6 +2,7 @@
 Redux Awaiter is a Redux middleware for giving opportunities to await and receive actions in anywhere.
 
 [![build status](https://img.shields.io/travis/yenshih/redux-awaiter/master.svg?style=flat-square)](https://travis-ci.org/yenshih/redux-awaiter)
+[![Coverage Status](https://img.shields.io/coveralls/yenshih/redux-awaiter/master.svg?style=flat)](https://coveralls.io/github/yenshih/redux-awaiter?branch=master)
 [![npm version](https://img.shields.io/npm/v/redux-awaiter.svg?style=flat-square)](https://www.npmjs.com/package/redux-awaiter)
 [![npm downloads](https://img.shields.io/npm/dm/redux-awaiter.svg?style=flat-square)](https://www.npmjs.com/package/redux-awaiter)
 
