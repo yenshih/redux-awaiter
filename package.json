@@ -58,7 +58,7 @@
     "@types/node": "^8.0.32",
     "jest": "^21.2.1",
     "redux": "^3.7.2",
-    "ts-jest": "^21.0.1",
+    "ts-jest": "^21.1.0",
     "tslint": "^5.7.0",
     "tslint-config-airbnb": "^5.3.0",
     "typescript": "^2.5.3"

@@ -48,12 +48,14 @@ export class Awaiters {
 
     private constructor() {}
 
-    public produce<P, M>(awaiter: Awaiter<P, M>) {
+    public produce<P = {}, M = {}>(awaiter: Awaiter<P, M>) {
         this.awaiters = [...this.awaiters, awaiter];
+        return this.awaiters.length;
     }
 
-    public consume<P, M>(action: Action<P, M>) {
+    public consume<P = {}, M = {}>(action: Action<P, M>) {
         this.awaiters = this.awaiters.filter(Awaiters.consumer(action));
+        return this.awaiters.length;
     }
 }
 
