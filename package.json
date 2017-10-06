@@ -56,6 +56,7 @@
   "devDependencies": {
     "@types/jest": "^21.1.2",
     "@types/node": "^8.0.32",
+    "coveralls": "^3.0.0",
     "jest": "^21.2.1",
     "redux": "^3.7.2",
     "ts-jest": "^21.1.0",
