@@ -80,9 +80,9 @@ type Pattern<P = {}, M = {}> = string | RegExp | ((action: Action<P, M>) => bool
 ```
 
 | pattern type | isMatch |
-| :------: | :------: | :------: |
-| `string` | `pattern === action.type` |
-| `RegExp` | `pattern.test(action.type)` |
+| --- | --- | --- |
+| `string`   | `pattern === action.type` |
+| `RegExp`   | `pattern.test(action.type)` |
 | `function` | `pattern(action)` |
 
 `object` pattern is not supported, use a function instead.
