@@ -79,12 +79,6 @@ A pattern is to determine whether an action is matching.
 type Pattern<P = {}, M = {}> = string | RegExp | ((action: Action<P, M>) => boolean);
 ```
 
-| type | isMatch |
-| --- | --- | --- |
-| `string`   | `pattern === action.type` |
-| `RegExp`   | `pattern.test(action.type)` |
-| `function` | `pattern(action)` |
-
 `object` pattern is not supported, use a function instead.
 
 ### API
