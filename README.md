@@ -76,7 +76,7 @@ interface Action<P, M = {}> extends BaseAction {
 }
 ```
 
-A pattern is to determine whether an action is matching.
+A pattern determines whether an action is matching.
 
 ```typescript
 type Pattern<P = {}, M = {}> = string | RegExp | ((action: Action<P, M>) => boolean);
