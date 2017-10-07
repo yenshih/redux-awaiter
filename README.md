@@ -49,7 +49,7 @@ class UserListView extends React.PureComponent {
 ## Installation
 
 ```
-npm i redux-awaiter -D
+npm i redux-awaiter
 ```
 
 ## Documentation
