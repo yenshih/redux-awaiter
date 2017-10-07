@@ -1,4 +1,4 @@
-import { Action, Pattern, Awaiter } from './types';
+import { Action, Pattern, Awaiter } from '../types';
 
 export class Awaiters {
     public static get Instance() {

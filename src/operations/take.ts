@@ -1,4 +1,4 @@
-import awaiters from '../awaiters';
+import awaiters from '../internal/awaiters';
 import { Action, Pattern } from '../types';
 
 export const take = <P = {}, M = {}>(pattern: Pattern<P, M>) =>
