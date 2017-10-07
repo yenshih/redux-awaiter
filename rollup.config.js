@@ -1,19 +1,20 @@
 import typescript from 'rollup-plugin-typescript';
 import uglify from 'rollup-plugin-uglify';
 
-var env = process.env.NODE_ENV
-var config = {
+const env = process.env.NODE_ENV;
+
+const config = {
     name: 'ReduxAwaiter',
     output: {
-        format: 'umd'
+        format: 'umd',
     },
     plugins: [
         typescript({
             tsconfig: require('./tsconfig.json'),
-            typescript: require('typescript')
-        })
-    ]
-}
+            typescript: require('typescript'),
+        }),
+    ],
+};
 
 if (env === 'production') {
     config.plugins.push(
@@ -22,10 +23,10 @@ if (env === 'production') {
                 pure_getters: true,
                 unsafe: true,
                 unsafe_comps: true,
-                warnings: false
-            }
-        })
-    )
+                warnings: false,
+            },
+        }),
+    );
 }
 
-export default config
+export default config;
