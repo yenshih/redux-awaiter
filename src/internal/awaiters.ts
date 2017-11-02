@@ -27,7 +27,7 @@ export class Awaiters {
         };
     }
 
-    private awaiters: ReadonlyArray<Readonly<Awaiter<any>>> = [];
+    private awaiters: ReadonlyArray<Readonly<Awaiter<any, any>>> = [];
 
     private constructor() {}
 
