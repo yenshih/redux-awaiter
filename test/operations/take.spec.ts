@@ -16,7 +16,7 @@ describe('take', () => {
         expect(store.getState().value).toBe(-1);
         await expect(promise).resolves.toBe(incrementAction);
     });
-    
+
     it('works with RegExp pattern', async () => {
         const store = createStore<State>(rootReducer, applyMiddleware(awaiterMiddleware));
         const promise = take<number>(/^INC/);
@@ -25,7 +25,7 @@ describe('take', () => {
         expect(store.getState().value).toBe(-1);
         await expect(promise).resolves.toBe(incrementAction);
     });
-    
+
     it('works with function pattern', async () => {
         const store = createStore<State>(rootReducer, applyMiddleware(awaiterMiddleware));
         const promise = take<number>(({ type, payload }) => type.includes('INC') && payload > 0);
@@ -33,5 +33,16 @@ describe('take', () => {
         store.dispatch(incrementAction);
         expect(store.getState().value).toBe(-1);
         await expect(promise).resolves.toBe(incrementAction);
+    });
+
+    it('throws error with other patterns', async () => {
+        const store = createStore<State>(rootReducer, applyMiddleware(awaiterMiddleware));
+        const promise = take<number>({ type: INCREMENT, payload: 1 } as any);
+        store.dispatch(decrementAction);
+        store.dispatch(incrementAction);
+        expect(store.getState().value).toBe(-1);
+        await expect(promise).rejects.toEqual(
+            new TypeError('take(...): Invalid pattern. Expected string, RegExp or function.'),
+        );
     });
 });
